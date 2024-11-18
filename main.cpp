@@ -3,25 +3,25 @@
 
 using namespace std;
 
-string encrypt(string text)
+string encrypt(string text, int shift)
 {
     string temp = "";
 
     for (int i = 0; i < text.length(); i++)
     {
-        temp += (char)((int)text[i] - 1);
+        temp += (char)((int)text[i] - shift);
     }
 
     return temp;
 }
 
-string decrypt(string text)
+string decrypt(string text, int shift)
 {
     string temp = "";
 
     for (int i = 0; i < text.length(); i++)
     {
-        temp += (char)((int)text[i] + 1);
+        temp += (char)((int)text[i] + shift);
     }
 
     return temp;
@@ -31,6 +31,7 @@ int programm()
 {
     string text = "";
     int choice = -1;
+    int shift;
 
     cout << "1. encrypt\n";
     cout << "2. decrypt\n";
@@ -43,18 +44,22 @@ int programm()
     {
         cout << "text for encrypt: ";
         cin >> text;
+        cout << "shift for encrypt: ";
+        cin >> shift;
 
-        cout << "----------------------" << endl;
-        cout << "result: " << encrypt(text) << endl;
+        cout << "------------------------" << endl;
+        cout << "result: " << encrypt(text, shift) << endl;
         cout << "------------------------" << endl;
     }
     else if (choice == 2)
     {
         cout << "text for decrypt: ";
         cin >> text;
+        cout << "shift for encrypt: ";
+        cin >> shift;
 
         cout << "------------------------" << endl;
-        cout << "result: " << decrypt(text) << endl;
+        cout << "result: " << decrypt(text, shift) << endl;
         cout << "------------------------" << endl;
     }
     else if (choice == 3)
