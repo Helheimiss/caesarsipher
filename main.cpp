@@ -6,24 +6,20 @@ using namespace std;
 string encrypt(string text, int shift)
 {
     string temp = "";
-
     for (int i = 0; i < text.length(); i++)
     {
-        temp += (char)((int)text[i] - shift);
+        temp += (char)((int)text[i] + shift);
     }
-
     return temp;
 }
 
 string decrypt(string text, int shift)
 {
     string temp = "";
-
     for (int i = 0; i < text.length(); i++)
     {
-        temp += (char)((int)text[i] + shift);
+        temp += (char)((int)text[i] - shift);
     }
-
     return temp;
 }
 
@@ -36,14 +32,14 @@ int programm()
     cout << "1. encrypt\n";
     cout << "2. decrypt\n";
     cout << "3. exit\n";
-
     cout << "> ";
     cin >> choice;
+    cin.ignore();
 
     if (choice == 1)
     {
         cout << "text for encrypt: ";
-        cin >> text;
+        getline(cin, text);
         cout << "shift for encrypt: ";
         cin >> shift;
 
@@ -54,8 +50,8 @@ int programm()
     else if (choice == 2)
     {
         cout << "text for decrypt: ";
-        cin >> text;
-        cout << "shift for encrypt: ";
+        getline(cin, text);
+        cout << "shift for decrypt: ";
         cin >> shift;
 
         cout << "------------------------" << endl;
@@ -69,6 +65,7 @@ int programm()
     else
     {
         cout << "Invalid choice. Please try again." << endl;
+        return 0;
     }
 
     return 1;
